@@ -40,9 +40,3 @@ make
 ./Send
 ```
 Now you can type a number in the Send terminal and it will appear in the Recieve terminal. 
-
-How to build:
-// TODO
-
-How to test:
-// TODO 
