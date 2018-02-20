@@ -23,5 +23,3 @@ RUN apk update && \
 WORKDIR /opt
 COPY --from=builder /tmp/Recieve .
 COPY --from=builder /tmp/Send .
-CMD ["/opt/Send"]
-CMD ["/opt/Recieve"]
