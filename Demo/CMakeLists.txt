@@ -16,5 +16,5 @@ include_directories(SYSTEM ${CMAKE_BINARY_DIR})
 add_executable(Send ${CMAKE_CURRENT_SOURCE_DIR}/Send.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
 target_link_libraries(Send ${CLUON_LIBRARIES})
 
-add_executable(Recieve ${CMAKE_CURRENT_SOURCE_DIR}/Recieve.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
-target_link_libraries(Recieve ${CLUON_LIBRARIES})
+add_executable(Receive ${CMAKE_CURRENT_SOURCE_DIR}/Receive.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
+target_link_libraries(Receive ${CLUON_LIBRARIES})
