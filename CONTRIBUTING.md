@@ -2,46 +2,77 @@ How to contribute
 ---
 Trello board will be used for clarifying contribution. The development team will generate new user stories at the beginning of each development phase(sprint). User stories will be posted on trello board and during the development team meeting. Vertical user stories are recommended but not mandatory for team members to take. When it comes to a big or unfamiliar user story, it is also possible for team members to work on the user story in pair or divide it into several tasks to implement. 
  
-First clone the project.
+First install the libcluon dependencies:  
+```
+sudo add-apt-repository ppa:chrberger/libcluon
+```
+```
+sudo apt-get update
+```
+```
+sudo apt-get install libcluon
+```
 
 How to clone, build and test natively
 ---
-Clone the project  
+1. Clone the project  
+```
 git clone https://github.com/daikien/DIT168.git
+```
 
-Inside the Demo folder, create a build folder and move into it  
+2. Inside the Demo folder, create a build folder and move into it  
+```
 mkdir build && cd build
+```
 
-Run CMake  
+3. Run CMake  
+```
 cmake ..
+```
 
-Run make  
+4. Run make  
+```
 make
+```
 
-Start the Receive binary  
+5. Start the Receive binary  
+```
 ./Receive
+```
 
-Open a new terminal inside the build folder and start the Send binary  
+6. Open a new terminal inside the build folder and start the Send binary  
+```
 ./Send
+```
 
 Now you can type a number in the Send terminal and it will appear in the Receive terminal.
 
 How to clone, build and test using Docker
 ---
-Clone the project  
+1. Clone the project 
+```
 git clone https://github.com/daikien/DIT168.git
+```
 
-Inside the Demo folder, build the test  
+2. Inside the Demo folder, build the test  
+```
 sudo docker build -t test -f Dockerfile .
+```
 
-Run the test  
+3. Run the test  
+```
 sudo docker run --rm -ti --net=host test
+```
 
-Start the Receive binary  
+4. Start the Receive binary  
+```
 ./Receive
+```
 
-Open a new terminal and run the test again then start the Send binary  
+5. Open a new terminal and run the test again then start the Send binary  
+```
 ./Send
+```
 
 Now you can type a number in the Send terminal and it will appear in the Receive terminal.
 
