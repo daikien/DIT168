@@ -2,7 +2,6 @@ How to contribute:
 Trello board will be used for clarifying contribution. The development team will generate new user stories at the beginning of each development phase(sprint). User stories will be posted on trello board and during the development team meeting. Vertical user stories are recommended but not mandatory for team members to take. When it comes to a big or unfamiliar user story, it is also possible for team members to work on the user story in pair or divided it into serval tasks to implement. 
  
 First clone the project.
----
 
 How to clone, build and test natively
 Clone the project
