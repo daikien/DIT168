@@ -13,8 +13,13 @@ add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/messages.cpp
 
 include_directories(SYSTEM ${CMAKE_BINARY_DIR})
 
-add_executable(Send ${CMAKE_CURRENT_SOURCE_DIR}/Send.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
+add_executable(Send ${CMAKE_CURRENT_SOURCE_DIR}/Send.cpp ${CMAKE_CURRENT_SOURCE_DIR}/EvenChecker.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
 target_link_libraries(Send ${CLUON_LIBRARIES})
 
-add_executable(Receive ${CMAKE_CURRENT_SOURCE_DIR}/Receive.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
+add_executable(Receive ${CMAKE_CURRENT_SOURCE_DIR}/Receive.cpp ${CMAKE_CURRENT_SOURCE_DIR}/EvenChecker.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
 target_link_libraries(Receive ${CLUON_LIBRARIES})
+
+enable_testing()
+add_executable(${PROJECT_NAME}-Runner TestEvenChecker.cpp ${CMAKE_CURRENT_SOURCE_DIR}/EvenChecker.cpp ${CMAKE_BINARY_DIR}/messages.cpp)
+target_link_libraries(${PROJECT_NAME}-Runner ${CLUON_LIBRARIES})
+add_test(NAME ${PROJECT_NAME}-Runner COMMAND ${PROJECT_NAME}-Runner)
