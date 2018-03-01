@@ -11,3 +11,8 @@ The pull request has to be reviewed by at least two members of the development t
 When the develop branch has sufficient features for a release, it is merged into the release branch where testing is executed and bug-fixes are applied until the branch works as intended. When the branch is deemed done it is merged into the master and given a version number. To be mentioned, bug-fixing and testing are also executing during the reviewing of pull request and developing phase.
 When the hotfix has been tested, it will be merged into both the master, where it will be given a version number and into the develop branch for backup.
 As a layout for each branch, a git ignore file will be added to the current layout, which showing that there will be no build related folders and no docker related files. Meanwhile, all the source codes will be stored in a src folder indicating a folder for source files.
+
+## Version control
+Older versions of the project and docker images will be saved locally. Every version will be compressed and timestamped so we wont mix them up with the current version.
+
+Filipwa and guslovfsi will be in responsible for this.
