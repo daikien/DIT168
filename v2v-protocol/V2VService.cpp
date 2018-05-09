@@ -151,7 +151,6 @@ V2VService::V2VService() {
                        std::cout << "received '" << followerStatus.LongName()
                                  << "' from '" << sender << "'!" << std::endl;
 
-                       /* TODO: implement lead logic (if applicable) */
 
                        break;
                    }
@@ -168,26 +167,6 @@ V2VService::V2VService() {
                        followSteerAngle.steeringAngle(leaderStatus.steeringAngle());
                        opendlv::proxy::PedalPositionReading followSpeed;
                        followSpeed.percent(leaderStatus.speed());
-
-
-
-
-              			// cluon::OD4Session od4(111,[](cluon::data::Envelope &&envelope) noexcept {
-              		 //        if (envelope.dataType() == opendlv::proxy::GroundSteeringReading::ID()) {
-                 //   			opendlv::proxy::GroundSteeringReading receivedMsg = cluon::extractMessage<opendlv::proxy::GroundSteeringReading>(std::move(envelope));
-              	  //           	std::cout << "Sent a message for ground steering to " << receivedMsg.steeringAngle() << "." << std::endl;
-                 //              opendlv::proxy::GroundSteeringReading leaderSteerAngle;
-                 //              leaderSteerAngle.steeringAngle(receivedMsg.steeringAngle());
-              	  //       }
-              	  //       	else if (envelope.dataType() == opendlv::proxy::PedalPositionReading::ID()) {
-              			// opendlv::proxy::PedalPositionReading receivedMsg = cluon::extractMessage<opendlv::proxy::PedalPositionReading>(std::move(envelope));
-              	  //           	std::cout << "Sent a message for pedal position to " << receivedMsg.percent() << "." << std::endl;
-                 //              opendlv::proxy::PedalPositionReading leaderSteerSpeed;
-                 //              leaderSteerSpeed.percent(receivedMsg.percent());
-                 //      }
-                 //      V2VService.leaderStatus(receivedMsg.percent(),receivedMsg.steeringAngle(),100);
-                 //  });
-
                        break;
                    }
                    default: std::cout << "¯\\_(ツ)_/¯" << std::endl;
@@ -195,18 +174,6 @@ V2VService::V2VService() {
            });
 
 }
-
-// 	internalService = std::make_shared<cluon::OD4Session>(CID,[this](cluon::data::Envelope && evelope) noexpect{ //undecided CID
-// 			switch(envelope.dataType()){
-// 				case (angle id): {
-
-// 				}
-// 				case (speed id): {
-
-// 				}
-// 			}
-// });
-// }
 
 /**
  * This function sends an AnnouncePresence (id = 1001) message on the broadcast channel. It will contain information

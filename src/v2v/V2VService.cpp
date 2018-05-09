@@ -6,6 +6,7 @@ int main(int argc, char **argv) {
     //Authors: Simon Löfving, Filip Walldén and Boyan Dai
 
     //Get the commandline arguments
+    //offset is to adjust the speed difference
     auto commandlineArguments = cluon::getCommandlineArguments(argc, argv);
 
     //Check if they are provided
@@ -147,12 +148,12 @@ V2VService::V2VService() {
                        << std::endl;
                     // Steering delay. Authors: Simon Löfving and Boyan Dai
                     // In order to get accurate steering instruction when we recieved leaderstatus from another car,
-                    // we check the cmdQ against the DELAY variable which was intiliazed in the commandline.
-                    //The speed shouldnt be delayed and therefore it is sent in every if else statement.
+                    // We check the cmdQ against the DELAY variable which was intiliazed in the commandline.
+                    // The speed shouldnt be delayed and therefore it is sent in every if else statement.
                            opendlv::proxy::PedalPositionReading pedal;
                            opendlv::proxy::GroundSteeringReading steer;
                            SPEED = leaderStatus.speed();
-                    //If the leading car is going forward or backwards and there are more units of commands in the queue
+                    // If the leading car is going forward or backwards and there are more units of commands in the queue
                     // than the specified DELAY we push the leaders steeering command to the queue, sends the oldest command in the queue
                     // to our car and then erase the command from the queue.
                          if(SPEED != 0 && cmdQ.size() > DELAY){
@@ -162,13 +163,14 @@ V2VService::V2VService() {
                             steer.steeringAngle(cmdQ.front());
                             od4->send(steer);
                             cmdQ.pop();
-                    //If the DELAY is larger than the size of the queue, we add 0 to the queue. Due to this we fill up the queue
+                    // If the DELAY is larger than the size of the queue, we add 0 to the queue. Due to this we fill up the queue
                     // and get a steering delay when we follow.
                          }else if(SPEED != 0){
                              cmdQ.push(0);
+                    // The OFFSET here is changable by changing the initial arguments, for avoiding the different performance due to the hardware difference
                              pedal.percent(SPEED + OFFSET);
                              od4->send(pedal);
-                    //In any other case, for example no speed, were doing nothing.
+                    // In any other case, for example no speed, were doing nothing.
                          }else {
                              pedal.percent(SPEED);
                              od4->send(pedal);
