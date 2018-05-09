@@ -1,0 +1,90 @@
+/*
+Altered by Simon Löfving
+*/
+
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+h1{
+    font-size: 3rem;
+}
+h2{
+  font-size: 1rem;
+}
+
+span.dots {
+  color: gray;
+}
+
+table#dataView {
+  width: 90%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+table.dataFields {
+  padding-left: 5em;
+}
+
+button.btn{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.hidden {
+  visibility: collapse;
+}
+tr{
+  float: left;
+}
+
+.table td {
+  display: block;
+  border-top:none;
+}
+
+tr.warning {
+  background-color: #ffc890;
+}
+
+th.signal-type {
+  min-width: 50px;
+}
+
+th.signal-sender {
+  min-width: 50px;
+}
+
+th.signal-name {
+}
+
+th.signal-frequency {
+  min-width: 50px;
+}
+
+th.signal-timestamp {
+  min-width: 100px;
+}
+
+td.field-name {
+  min-width: 200px;
+  font-size: 30px;
+}
+
+td.field-plot {
+  min-width: 300px;
+}
+
+td.field-value {
+  font-size: 70px;
+}
+header{
+  width:100%;
+  color: #f48f42;
+  text-align: center;
+  padding: 20px 0;
+}
