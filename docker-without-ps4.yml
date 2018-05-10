@@ -1,0 +1,50 @@
+version: '2'
+services:
+    odsupercomponent:
+        image: seresearch/2018-dit-168:v0.3.5-armhf
+        network_mode: "host"
+        restart: always
+        volumes:
+        - .:/opt/miniature.data
+        command: "/opt/od4/bin/odsupercomponent --cid=214 --verbose=1 --configuration=/opt/miniature.data/configuration"
+
+
+    proxy-miniature-pwm-motor:
+        image: seresearch/2018-dit-168:v0.3.5-armhf
+        depends_on:
+        - odsupercomponent
+        network_mode: "host"
+        restart: always
+        privileged: true
+        volumes:
+        - /sys/:/sys/
+        - /dev/:/dev/
+        command: "/opt/opendlv.miniature/bin/opendlv-proxy-miniature-pwm-motor --cid=214 --freq=50 --id=1"
+
+    # Your microservices
+    #
+
+    
+
+    device-ultrasonic-srf08-front:
+        image: ultrasonic
+        network_mode: "host"
+        privileged: true
+        volumes:
+          - /dev/i2c-1:/dev/i2c-1
+        command: "/usr/bin/opendlv-device-ultrasonic-srf08 --dev=/dev/i2c-1 --bus-address=113 --cid=214 --verbose=1 --freq=5 --id=0"
+    
+    device-ultrasonic-srf08-rear:
+        image: ultrasonic
+        network_mode: "host"
+        privileged: true
+        volumes:
+          - /dev/i2c-1:/dev/i2c-1
+        command: "/usr/bin/opendlv-device-ultrasonic-srf08 --dev=/dev/i2c-1 --bus-address=112 --cid=214 --verbose=1 --freq=5 --id=1"
+
+    web-interface:
+            image: web-viewer
+            network_mode: "host"
+            privileged: true
+            restart: always
+            command: "--port=5001 --cid=214"    
