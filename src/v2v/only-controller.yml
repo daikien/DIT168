@@ -1,0 +1,9 @@
+version: '2'
+services:
+    # micro service for PS4 controller.
+    proxy-miniature-ps3controller:
+        image: ${IMAGE}
+        network_mode: "host"
+        devices:
+        - "/dev/input/js0:/dev/input/js0"
+        command: "/opt/opendlv.miniature/bin/opendlv-proxy-miniature-ps3controller --cid=214 --freq=7 --verbose=1"
