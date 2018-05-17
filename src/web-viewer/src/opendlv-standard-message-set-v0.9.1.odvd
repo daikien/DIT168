@@ -19,7 +19,6 @@
 // V2V protocol
 
 message LeaderStatus [id = 2001] {
-  uint64 timestamp [id = 1];
   float speed [id = 2];
   float steering [id = 3];
 }
