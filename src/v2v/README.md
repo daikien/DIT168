@@ -5,7 +5,8 @@ This repo contains a V2V communication protocol between autonomous RCs with a fo
 ### Table of contents
 
 1. ##### [Installation](https://github.com/DIT168-V2V-responsibles/v2v-protocol#1-installation)
-2. ##### [Get started](https://github.com/DIT168-V2V-responsibles/v2v-protocol#2-get-started)
+2A. ##### [Get started](https://github.com/DIT168-V2V-responsibles/v2v-protocol#2-get-started)
+2B. ##### [Get started(Old version)](https://github.com/DIT168-V2V-responsibles/v2v-protocol#2-get-started)
 3. ##### [License](https://github.com/DIT168-V2V-responsibles/v2v-protocol#3-license)
 4. ##### [Requests](https://github.com/DIT168-V2V-responsibles/v2v-protocol#4-protocol-requests)
 5. ##### [CID ranges](https://github.com/DIT168-V2V-responsibles/v2v-protocol#5-cid-ranges)
@@ -13,6 +14,27 @@ This repo contains a V2V communication protocol between autonomous RCs with a fo
 ### 1. Installation
 To install libcluon please refer to the installation guide [Libcluon](https://github.com/chrberger/libcluon).
 
+### 2. Get started
+
+Clone the repo using:
+```
+git clone https://github.com/DIT168-V2V-responsibles/v2v-protocol.git
+```
+
+Navigate to the right folder and build the docker image:
+```
+cd src/v2v
+docker build -t v2v -f dockerfile .
+```
+
+Run the docker image:
+ip is your ip
+tofollow is the number of the group you want to follow or 0 if you are the leader
+offset is the speed difference between your car and the car you are following
+delay is a number to create a delay when turning(recommended is 13)
+```
+docker run -rm -ti --net=host v2v --ip=(string) --tofollow=(string) --offset=(float) --delay=(int)
+```
 ### 2. Get started
 
 Clone the repo using:
@@ -35,7 +57,6 @@ Finally compile:
 ```
 make
 ```
-
 ### 3. License
 The protocol is licenced under GNU Lesser General Public License version 3.0. This is due to the incorporation of "libcluon" library as part of the project. Libcluon offers their software under LGPLv 3.0 licence and due to the copyleft nature, anyone who distribute its code or derivative works, are required to make the source available under the same terms. 
 Libcluon library can be found [here](https://github.com/chrberger/libcluon).
