@@ -28,13 +28,14 @@ docker build -t v2v -f dockerfile .
 ```
 
 Run the docker image:
-ip is your ip
 
-tofollow is the number of the group you want to follow or 0 if you are the leader
+- ip is your ip
 
-offset is the speed difference between your car and the car you are following
+- tofollow is the number of the group you want to follow or 0 if you are the leader
 
-delay is a number to create a delay when turning(recommended is 13)
+- offset is the speed difference between your car and the car you are following
+
+- delay is a number to create a delay when turning(recommended is 13)
 ```
 docker run -rm -ti --net=host v2v --ip=(string) --tofollow=(string) --offset=(float) --delay=(int)
 ```
