@@ -14,7 +14,7 @@ This repo contains a V2V communication protocol between autonomous RCs with a fo
 ### 1. Installation
 To install libcluon please refer to the installation guide [Libcluon](https://github.com/chrberger/libcluon).
 
-### 2. Get started
+### 2A. Get started
 
 Clone the repo using:
 ```
@@ -35,7 +35,7 @@ delay is a number to create a delay when turning(recommended is 13)
 ```
 docker run -rm -ti --net=host v2v --ip=(string) --tofollow=(string) --offset=(float) --delay=(int)
 ```
-### 2. Get started
+### 2B. Get started
 
 Clone the repo using:
 ```
